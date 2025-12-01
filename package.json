@@ -1,0 +1,25 @@
+{
+  "name": "bl-cli",
+  "version": "1.0.0",
+  "description": "CLI tool to copy Memory Bank custom_modes and .cursor folders to the current working directory",
+  "main": "index.js",
+  "bin": {
+    "bl-cli": "./bin/bl-cli.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "cli",
+    "memory-bank",
+    "cursor",
+    "template"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "chalk": "^4.1.2",
+    "fs-extra": "^11.2.0"
+  }
+}
+

@@ -1,0 +1,3 @@
+[submodule "templates/cursor-memory-bank"]
+	path = templates/cursor-memory-bank
+	url = https://github.com/bearluo/cursor-memory-bank.git
