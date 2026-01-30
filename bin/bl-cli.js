@@ -15,12 +15,10 @@ const command = process.argv[2];
 // Get the source paths (relative to this script's location)
 const scriptDir = __dirname;
 const projectRoot = path.resolve(scriptDir, '..');
-const sourceCustomModes = path.join(projectRoot, 'templates', 'cursor-memory-bank', 'custom_modes');
 const sourceCursor = path.join(projectRoot, 'templates', 'cursor-memory-bank', '.cursor');
 
 // Get the target path (current working directory)
 const targetDir = process.cwd();
-const targetCustomModes = path.join(targetDir, 'custom_modes');
 const targetCursor = path.join(targetDir, '.cursor');
 
 /**
@@ -63,16 +61,8 @@ async function initMemoryBank() {
 
   // Display paths
   console.log(chalk.gray(`源目录:`));
-  console.log(chalk.gray(`  custom_modes: ${sourceCustomModes}`));
   console.log(chalk.gray(`  .cursor: ${sourceCursor}`));
   console.log(chalk.gray(`\n目标目录: ${targetDir}\n`));
-
-  // Copy custom_modes
-  const customModesSuccess = await copyDirectory(
-    sourceCustomModes,
-    targetCustomModes,
-    'custom_modes'
-  );
 
   // Copy .cursor
   const cursorSuccess = await copyDirectory(
@@ -83,7 +73,7 @@ async function initMemoryBank() {
 
   // Summary
   console.log(chalk.blue('\n' + '='.repeat(50)));
-  if (customModesSuccess && cursorSuccess) {
+  if (cursorSuccess) {
     console.log(chalk.green('✅ 所有文件复制完成！\n'));
     console.log(chalk.gray(`已复制到: ${targetDir}`));
     console.log(chalk.gray(`  - custom_modes/`));
@@ -101,7 +91,7 @@ async function initMemoryBank() {
 function showHelp() {
   console.log(chalk.blue('\n📦 Memory Bank CLI\n'));
   console.log(chalk.gray('使用方法:'));
-  console.log(chalk.white('  bl-cli init-memory-bank   初始化 Memory Bank（复制 custom_modes 和 .cursor 文件夹）\n'));
+  console.log(chalk.white('  bl-cli init-memory-bank   初始化 Memory Bank（.cursor 文件夹）\n'));
   console.log(chalk.gray('示例:'));
   console.log(chalk.white('  bl-cli init-memory-bank\n'));
 }
